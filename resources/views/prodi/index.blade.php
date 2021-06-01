@@ -12,7 +12,7 @@
             <thread>
                 <tr>
                     <th>Logo</th>
-                    <th>Nama</th>
+                    <th>Nama Prodi</th>
                     <th>Aksi</th>
                 </tr>
             </thread>
@@ -22,8 +22,14 @@
                     <td><img src="{{ asset('storage/'.$item->foto) }}" width="100px"</td>
                     <td> {{ $item->nama }} </td>
                     <td>
-                        <a href="{{ url('/prodi/'.$item->id) }}" class="btn btn-warning">Detail</a>
-                        <a href="{{ url('/prodi/'.$item->id.'/edit') }}" class="btn btn-info">Edit</a>
+                        <form action="{{ route('prodi.destroy', ['prodi' => $item->id]) }}"
+                        method="POST">
+                            <a href="{{ url('/prodi/'.$item->id) }}" class="btn btn-warning">Details</a>
+                            <a href="{{ url('/prodi/'.$item->id.'/edit') }}" class="btn btn-info">Edit</a>
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach
