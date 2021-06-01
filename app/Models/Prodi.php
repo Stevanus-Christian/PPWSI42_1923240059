@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Mahasiswa extends Model
+class Prodi extends Model
 {
     use HasFactory;
 
-    public function Prodi()
+    public function mahasiswas()
     {
-        return $this->belongsTo('App\Models\Prodi');
+        return $this->hasMany('App\Models\Mahasiswa');
     }
 }
